@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
+	
 
 	"github.com/spf13/cobra"
 )
@@ -24,16 +24,9 @@ import (
 // networkCmd represents the network command
 var networkCmd = &cobra.Command{
 	Use:   "network",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("network called")
-	},
+	Short: "It is used to view and connect network available",
+	Long: `This is a command used to search for bluetooth and wifi boards near and connect them to upload code OTA`,
+	Example: "CLI-Network network [wifi/blth] <flags>",
 }
 
 func init() {

@@ -24,13 +24,10 @@ import (
 // wifiCmd represents the wifi command
 var wifiCmd = &cobra.Command{
 	Use:   "wifi",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Used to connect to wifi-board/esp8266",
+	Long: `this command is used to connect the board to the wifi using same netwok on PC
+	and board to upload code`,
+	Example: "CLI-Network network wifi <flags>",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("wifi called")
 	},
