@@ -28,13 +28,13 @@ var wifiCmd = &cobra.Command{
 	Long: `this command is used to connect the board to the wifi using same netwok on PC
 	and board to upload code`,
 	Example: "CLI-Network network wifi <flags>",
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("wifi called")
-	},
+	Run: wififunc,
 }
 
 func init() {
 	networkCmd.AddCommand(wifiCmd)
+	wifiCmd.Flags().BoolP("scan", "s", false, "Scan for the network")
+	wifiCmd.Flags().BoolP("connect", "c", false, "Connect to the network")
 
 	// Here you will define your flags and configuration settings.
 
@@ -45,4 +45,12 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// wifiCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
+func wififunc(cmd *cobra.Command, args []string) {
+	scanFlagStatus, _ := cmd.Flags().GetBool("scan")
+	if scanFlagStatus {
+		fmt.Println("Wifi scanned")
+	} else {
+		fmt.Println("Network need subcommands")
+	}
 }

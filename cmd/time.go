@@ -34,6 +34,8 @@ var timeCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(timeCmd)
 	timeCmd.Flags().BoolP("ruby", "r", false, "Current Time of the System in ruby format")
+	timeCmd.Flags().BoolP("now", "n", false, "Current Time of the System in normal format")
+	//timeCmd.Flags().StringP("now", "n", "", "Current Time of the System in normal format")
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
@@ -46,13 +48,20 @@ func init() {
 }
 
 func timefunc(cmd *cobra.Command, args []string) error {
-	fstatus, _ := cmd.Flags().GetBool("ruby")
-	
-	if !fstatus {
+	rubyFlagStatus, _ := cmd.Flags().GetBool("ruby")
+	nowFlagStatus, _ := cmd.Flags().GetBool("now")
+
+	if nowFlagStatus {
 		now := time.Now()
+		fmt.Println("Now time is :")
 		fmt.Println(now)
+	} else if rubyFlagStatus {
+		now := time.Now()
+		fmt.Println("Time in UTC format is :")
+		fmt.Println(now.Format("2006-01-02 15:04:05 Monday"))
 	} else {
-		now := time.Now().UTC()
+		now := time.Now()
+		fmt.Println("Time is :")
 		fmt.Println(now)
 	}
 	return nil

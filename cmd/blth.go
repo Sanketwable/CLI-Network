@@ -34,6 +34,8 @@ var blthCmd = &cobra.Command{
 
 func init() {
 	networkCmd.AddCommand(blthCmd)
+	blthCmd.Flags().BoolP("scan", "s", false, "Scan for WiFi network")
+	blthCmd.Flags().BoolP("connect", "c", false, "Connect to BlueTooth network")
 
 	// Here you will define your flags and configuration settings.
 
